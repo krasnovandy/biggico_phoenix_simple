@@ -15,9 +15,14 @@
     <div class="container">
       <header class="header">
         <nav role="navigation">
-          <ul class="nav nav-pills pull-right">
-            <li><a href="http://www.phoenixframework.org/docs">Get Started</a></li>
-          </ul>
+            <ul class="nav nav-pills pull-right">
+                <li>
+                    <%= link "Send data", to: form_data_path(@conn, :new) %>
+                </li>
+                <li>
+                    <%= link "Show all", to: form_data_path(@conn, :index) %>
+                </li>
+            </ul>
         </nav>
         <span class="logo"></span>
       </header>
@@ -29,7 +34,7 @@
         <%= render @view_module, @view_template, assigns %>
       </main>
 
-    </div> <!-- /container -->
+    </div>
     <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
   </body>
 </html>

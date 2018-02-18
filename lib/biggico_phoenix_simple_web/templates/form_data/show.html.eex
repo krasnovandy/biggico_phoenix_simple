@@ -1,0 +1,4 @@
+<%= form_for @conn, form_data_path(@conn, :show, :id), fn _ -> %>
+  <h1>Record № <%= @conn.params["id"] %></h1><br>
+  <%= raw @form %>
+<% end %>

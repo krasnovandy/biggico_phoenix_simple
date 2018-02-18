@@ -1,21 +1,51 @@
-// Brunch automatically concatenates all files in your
-// watched paths. Those paths can be configured at
-// config.paths.watched in "brunch-config.js".
-//
-// However, those files will only be executed if
-// explicitly imported. The only exception are files
-// in vendor, which are never wrapped in imports and
-// therefore are always executed.
-
-// Import dependencies
-//
-// If you no longer want to use a dependency, remember
-// to also remove its path from "config.paths.watched".
 import "phoenix_html"
 
-// Import local files
-//
-// Local files can be imported directly using relative
-// paths "./socket" or full ones "web/static/js/socket".
+function fieldCounter() {
+    var currentCount = 1;
+    return function() {
+        return currentCount++;
+    };
+}
 
-// import socket from "./socket"
+var count = fieldCounter();
+
+function addFields() {
+    var field_number = count();
+    var field_name = "field_" + field_number;
+    var div = document.createElement("div");
+    div.className = "formField";
+    var deleteMe = document.createElement("a");
+    deleteMe.className = "deleteMe";
+    deleteMe.innerHTML = "X";
+    deleteMe.href = "javascript:;";
+    deleteMe.onclick = removeFields;
+    var label = document.createElement("label");
+    label.htmlFor = field_name;
+    label.innerHTML = field_name;
+    var container = document.getElementById("form_container");
+    var submit = container.lastChild;
+    var input = document.createElement("input");
+    input.type = "text";
+    input.name = "data["+field_name+"]";
+    input.id = field_name;
+    div.appendChild(label);
+    div.appendChild(input);
+    div.appendChild(deleteMe);
+    container.insertBefore(div, submit);
+}
+
+function removeFields(e) {
+    var target =  e.target;
+    var field_div = target.parentNode;
+    var parent = field_div.parentNode;
+    parent.removeChild(field_div);
+}
+
+var addButton = document.getElementById("addField");
+(addButton !== null)? addButtonListener() : null;
+
+function addButtonListener() {
+    addButton.addEventListener("click", function(){
+        addFields();
+    })
+}

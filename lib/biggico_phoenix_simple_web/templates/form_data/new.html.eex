@@ -1,0 +1,10 @@
+<h1>Data send form</h1>
+<input value="Add field" id="addField" type="button">
+
+<%= form_for @conn, form_data_path(@conn, :create), [as: :data, id: "form_container"], fn f -> %>
+    <div class="formField">
+    <%= label(f, :field_0, "field_0")%>
+  <%= text_input(f, :field_0)%>
+    </div>
+  <%= submit "submit" %>
+<% end %>

@@ -1,1 +1,18 @@
 /* This file is for your main application css. */
+
+.formField {
+    margin-top: 3px;
+    margin-bottom: 3px;
+}
+
+.deleteMe {
+    margin-left: 10px;
+}
+
+#data_field_0 {
+    margin-left: -4px;
+}
+
+label {
+    margin-right: 20px;
+}

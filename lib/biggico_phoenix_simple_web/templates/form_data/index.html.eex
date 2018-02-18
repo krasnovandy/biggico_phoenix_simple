@@ -1,0 +1,7 @@
+<ul>
+  <%= for record <- @records do %>
+    <li>
+      <%= link record.id, to: form_data_path(@conn, :show, record) %>
+    </li>
+  <% end %>
+</ul>
